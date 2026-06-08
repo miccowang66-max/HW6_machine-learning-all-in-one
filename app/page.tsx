@@ -5,7 +5,7 @@ import AlgorithmNav from "@/components/AlgorithmNav";
 import MainContentView from "@/components/MainContentView";
 import FaceApiWidget from "@/components/FaceApiWidget";
 import HelpModal from "@/components/HelpModal";
-import { Brain, Github, Sparkles } from "lucide-react";
+import { Brain, Download, Github, Sparkles } from "lucide-react";
 import type { FaceMetrics } from "@/components/FaceApiWidget";
 
 export default function Home() {
@@ -37,6 +37,15 @@ export default function Home() {
           </div>
         </div>
         <div className="flex items-center gap-3">
+          <a
+            href="/ml_algorithms.py"
+            download
+            aria-label="Download Python implementations"
+            className="flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-[10px] font-medium text-blue-600 cursor-pointer transition-colors duration-200 hover:bg-blue-100 hover:text-blue-700"
+          >
+            <Download className="h-3 w-3" />
+            Download .py
+          </a>
           <span className="flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-[10px] text-slate-500">
             <Sparkles className="h-3 w-3 text-amber-500" />
             Interactive Dashboard v1.1
