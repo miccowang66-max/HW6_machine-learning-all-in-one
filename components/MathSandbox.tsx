@@ -92,11 +92,11 @@ export default function MathSandbox({ algo }: MathSandboxProps) {
         animate={{ opacity: 1, y: 0 }}
         className="glass-card overflow-x-auto p-5"
       >
-        <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-blue-400">
+        <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-blue-600">
           <Triangle className="h-4 w-4" />
           核心數學公式
         </h3>
-        <div className="rounded-lg bg-slate-800/60 p-4 text-center">
+        <div className="rounded-lg bg-slate-100 p-4 text-center">
           <span className="text-lg">
             <TeX math={algo.formula} />
           </span>
@@ -112,14 +112,14 @@ export default function MathSandbox({ algo }: MathSandboxProps) {
           className="glass-card p-5"
         >
           <div className="mb-4 flex items-center justify-between">
-            <h3 className="flex items-center gap-2 text-sm font-semibold text-amber-400">
+            <h3 className="flex items-center gap-2 text-sm font-semibold text-amber-600">
               <Sliders className="h-4 w-4" />
               互動參數調整
             </h3>
             <button
               onClick={handleReset}
               aria-label="Reset parameters"
-              className="flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-xs text-slate-400 transition-colors duration-200 hover:bg-slate-800 hover:text-slate-200"
+              className="flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-xs text-slate-500 transition-colors duration-200 hover:bg-slate-100 hover:text-slate-600"
             >
               <RotateCcw className="h-3 w-3" />
               Reset
@@ -130,8 +130,8 @@ export default function MathSandbox({ algo }: MathSandboxProps) {
             {config.map((slider) => (
               <div key={slider.key}>
                 <div className="mb-1.5 flex items-center justify-between">
-                  <label className="text-sm text-slate-300">{slider.name}</label>
-                  <span className="rounded bg-slate-800 px-2 py-0.5 text-xs font-mono text-blue-400">
+              <label className="text-sm text-slate-700">{slider.name}</label>
+              <span className="rounded bg-slate-100 px-2 py-0.5 text-xs font-mono text-blue-600">
                     {typeof values[slider.key] === "number" && Number.isInteger(values[slider.key])
                       ? values[slider.key]
                       : values[slider.key]?.toFixed(2)}
@@ -145,9 +145,9 @@ export default function MathSandbox({ algo }: MathSandboxProps) {
                   value={values[slider.key]}
                   onChange={(e) => handleSlider(slider.key, parseFloat(e.target.value))}
                   aria-label={slider.name}
-                  className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-slate-700 accent-blue-500 transition-all duration-200"
-                />
-                <div className="mt-1 flex justify-between text-[10px] text-slate-600">
+              className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-slate-200 accent-blue-500 transition-all duration-200"
+            />
+            <div className="mt-1 flex justify-between text-[10px] text-slate-400">
                   <span>{slider.min}</span>
                   <span>{slider.max}</span>
                 </div>
@@ -164,18 +164,18 @@ export default function MathSandbox({ algo }: MathSandboxProps) {
         transition={{ delay: 0.2 }}
         className="glass-card p-5"
       >
-        <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-emerald-400">
+        <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-emerald-600">
           <Wand2 className="h-4 w-4" />
           動態計算結果
         </h3>
-        <div className="rounded-lg bg-slate-800/60 p-4">
+        <div className="rounded-lg bg-slate-100 p-4">
           {dynamicResult.type === "latex" ? (
             <span className="text-base">
               <TeX math={dynamicResult.value} />
             </span>
           ) : (
             <div className="space-y-2">
-              <p className="text-base text-slate-200">{dynamicResult.value}</p>
+              <p className="text-base text-slate-700">{dynamicResult.value}</p>
               {dynamicResult.subtext && (
                 <p className="text-sm text-slate-500">{dynamicResult.subtext}</p>
               )}

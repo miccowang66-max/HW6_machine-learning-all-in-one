@@ -57,27 +57,27 @@ export default function AlgorithmNav({ selectedId, onSelect }: AlgorithmNavProps
   return (
     <div className="flex h-full flex-col">
       {/* Header */}
-      <div className="border-b border-slate-700/50 px-5 py-5">
+      <div className="border-b border-slate-200 px-5 py-5">
         <div className="mb-1 flex items-center gap-2">
-          <Hash className="h-4 w-4 text-blue-400" />
-          <span className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+          <Hash className="h-4 w-4 text-blue-600" />
+          <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">
             Algorithm Panorama
           </span>
         </div>
-        <h2 className="text-lg font-bold text-white">Top 10 ML Algorithms</h2>
+        <h2 className="text-lg font-bold text-slate-900">Top 10 ML Algorithms</h2>
       </div>
 
       {/* Search */}
       <div className="px-4 py-3">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-500" />
+          <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             placeholder="搜尋演算法..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             aria-label="Search algorithms"
-            className="w-full rounded-lg border border-slate-700/50 bg-slate-900 py-2 pl-9 pr-3 text-sm text-slate-200 placeholder-slate-500 transition-colors duration-200 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20"
+            className="w-full rounded-lg border border-slate-200 bg-white py-2 pl-9 pr-3 text-sm text-slate-700 placeholder-slate-400 transition-colors duration-200 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20"
           />
         </div>
       </div>
@@ -100,8 +100,8 @@ export default function AlgorithmNav({ selectedId, onSelect }: AlgorithmNavProps
                 onClick={() => handleSelect(algo.id)}
                 className={`group relative mb-1.5 flex w-full cursor-pointer items-start gap-3 rounded-xl px-3 py-3 text-left transition-all duration-200 ${
                   isActive
-                    ? "bg-blue-600/15 ring-1 ring-blue-500/30"
-                    : "hover:bg-slate-800/60"
+                    ? "bg-blue-50 ring-1 ring-blue-200"
+                    : "hover:bg-slate-100"
                 }`}
               >
                 {/* Active indicator */}
@@ -118,7 +118,7 @@ export default function AlgorithmNav({ selectedId, onSelect }: AlgorithmNavProps
                   className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg text-xs font-bold ${
                     isActive
                       ? "bg-blue-600 text-white"
-                      : "bg-slate-800 text-slate-400 group-hover:bg-slate-700 group-hover:text-slate-300"
+                      : "bg-slate-100 text-slate-500 group-hover:bg-slate-200 group-hover:text-slate-600"
                   }`}
                 >
                   {algo.id}
@@ -129,7 +129,7 @@ export default function AlgorithmNav({ selectedId, onSelect }: AlgorithmNavProps
                   <div className="flex items-center gap-2">
                     <h3
                       className={`truncate text-sm font-semibold ${
-                        isActive ? "text-blue-400" : "text-slate-200 group-hover:text-white"
+                        isActive ? "text-blue-600" : "text-slate-700 group-hover:text-slate-900"
                       }`}
                     >
                       {algo.name}
@@ -142,10 +142,10 @@ export default function AlgorithmNav({ selectedId, onSelect }: AlgorithmNavProps
                   <div className="mt-1.5 flex items-center gap-2">
                     <Icon
                       className={`h-3.5 w-3.5 ${
-                        isActive ? "text-blue-400" : "text-slate-600"
+                        isActive ? "text-blue-500" : "text-slate-400"
                       }`}
                     />
-                    <span className="text-[10px] text-slate-600">{algo.use_case}</span>
+                    <span className="text-[10px] text-slate-400">{algo.use_case}</span>
                   </div>
                 </div>
 
@@ -153,8 +153,8 @@ export default function AlgorithmNav({ selectedId, onSelect }: AlgorithmNavProps
                 <ChevronRight
                   className={`mt-2 h-4 w-4 flex-shrink-0 transition-all ${
                     isActive
-                      ? "rotate-90 text-blue-400"
-                      : "text-slate-700 group-hover:translate-x-0.5 group-hover:text-slate-500"
+                      ? "rotate-90 text-blue-500"
+                      : "text-slate-300 group-hover:translate-x-0.5 group-hover:text-slate-400"
                   }`}
                 />
               </motion.button>
@@ -163,20 +163,20 @@ export default function AlgorithmNav({ selectedId, onSelect }: AlgorithmNavProps
         </AnimatePresence>
 
         {filtered.length === 0 && (
-          <p className="py-8 text-center text-sm text-slate-600">沒有找到匹配的演算法</p>
+          <p className="py-8 text-center text-sm text-slate-400">沒有找到匹配的演算法</p>
         )}
       </nav>
 
       {/* Footer */}
-      <div className="border-t border-slate-700/50 px-4 py-3">
-        <div className="flex items-center justify-between text-[10px] text-slate-600">
+      <div className="border-t border-slate-200 px-4 py-3">
+        <div className="flex items-center justify-between text-[10px] text-slate-400">
           <span>Supervised</span>
           <div className="flex gap-3">
             <span className="flex items-center gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> 8 Algos
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> 8 Algos
             </span>
             <span className="flex items-center gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-amber-400" /> 2 Algos
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-500" /> 2 Algos
             </span>
           </div>
           <span>Unsupervised</span>

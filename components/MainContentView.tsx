@@ -77,11 +77,11 @@ export default function MainContentView({ selectedId }: MainContentViewProps) {
     return (
       <div className="flex h-full items-center justify-center">
         <div className="text-center">
-          <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-800">
-            <Brain className="h-8 w-8 text-slate-500" />
+          <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100">
+            <Brain className="h-8 w-8 text-slate-400" />
           </div>
-          <h3 className="text-lg font-semibold text-slate-300">選擇一個演算法開始學習</h3>
-          <p className="mt-1 text-sm text-slate-500">從左側導覽欄選取 Machine Learning 演算法</p>
+          <h3 className="text-lg font-semibold text-slate-600">選擇一個演算法開始學習</h3>
+          <p className="mt-1 text-sm text-slate-400">從左側導覽欄選取 Machine Learning 演算法</p>
         </div>
       </div>
     );
@@ -100,7 +100,7 @@ export default function MainContentView({ selectedId }: MainContentViewProps) {
         key={`header-${algo.id}`}
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="border-b border-slate-700/50 px-6 py-5"
+        className="border-b border-slate-200 px-6 py-5"
       >
         <div className="flex items-start justify-between">
           <div>
@@ -109,26 +109,26 @@ export default function MainContentView({ selectedId }: MainContentViewProps) {
                 {algo.id}
               </span>
               <div>
-                <h2 className="text-xl font-bold text-white">{algo.name}</h2>
+                <h2 className="text-xl font-bold text-slate-900">{algo.name}</h2>
                 <span className={isSupervised ? "tag-supervised" : "tag-unsupervised"}>
                   {isSupervised ? "監督式學習" : "非監督式學習"}
                 </span>
               </div>
             </div>
-            <p className="text-sm text-slate-400">{algo.summary}</p>
+            <p className="text-sm text-slate-600">{algo.summary}</p>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="mt-5 flex gap-1 rounded-lg bg-slate-800/60 p-1">
+        <div className="mt-5 flex gap-1 rounded-lg bg-slate-100 p-1">
           {(["concept", "math", "visual"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`flex cursor-pointer items-center justify-center gap-1.5 rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${
                 activeTab === tab
-                  ? "bg-slate-700 text-white shadow-sm"
-                  : "text-slate-400 hover:text-slate-200"
+                  ? "bg-white text-slate-900 shadow-sm"
+                  : "text-slate-500 hover:text-slate-700"
               }`}
             >
               {tab === "concept" && (
@@ -169,16 +169,16 @@ export default function MainContentView({ selectedId }: MainContentViewProps) {
               <div className="space-y-5">
                 {/* Definition */}
                 <div className="glass-card p-5">
-                  <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-blue-400">
+                  <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-blue-600">
                     <Lightbulb className="h-4 w-4" />
                     定義與核心概念
                   </h3>
-                  <p className="leading-relaxed text-slate-300">{algo.details}</p>
+                  <p className="leading-relaxed text-slate-700">{algo.details}</p>
                 </div>
 
                 {/* Use Case */}
                 <div className="glass-card p-5">
-                  <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-emerald-400">
+                  <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-emerald-600">
                     <TrendingUp className="h-4 w-4" />
                     應用場景
                   </h3>
@@ -186,7 +186,7 @@ export default function MainContentView({ selectedId }: MainContentViewProps) {
                     {algo.use_case.split("、").map((c, i) => (
                       <span
                         key={i}
-                        className="rounded-full bg-emerald-500/10 px-3 py-1.5 text-sm text-emerald-300 ring-1 ring-inset ring-emerald-500/20"
+                        className="rounded-full bg-emerald-50 px-3 py-1.5 text-sm text-emerald-700 ring-1 ring-inset ring-emerald-600/20"
                       >
                         {c}
                       </span>
@@ -197,27 +197,27 @@ export default function MainContentView({ selectedId }: MainContentViewProps) {
                 {/* Pros & Cons */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="glass-card p-5">
-                    <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-green-400">
+                    <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-green-600">
                       <CheckCircle2 className="h-4 w-4" />
                       優點
                     </h3>
                     <ul className="space-y-2">
                       {prosCons.pros.map((p, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
-                          <span className="mt-0.5 text-green-400">•</span>
+                        <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
+                          <span className="mt-0.5 text-green-500">•</span>
                           {p}
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div className="glass-card p-5">
-                    <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-red-400">
+                    <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-red-500">
                       <AlertTriangle className="h-4 w-4" />
                       缺點
                     </h3>
                     <ul className="space-y-2">
                       {prosCons.cons.map((c, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
+                        <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
                           <span className="mt-0.5 text-red-400">•</span>
                           {c}
                         </li>
@@ -235,11 +235,11 @@ export default function MainContentView({ selectedId }: MainContentViewProps) {
             {activeTab === "visual" && (
               <div className="space-y-5">
                 <div className="glass-card p-5">
-                  <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold text-purple-400">
+                  <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold text-purple-600">
                     <BarChart3 className="h-4 w-4" />
                     演算法結構視覺化圖解
                   </h3>
-                  <div className="flex min-h-[300px] items-center justify-center rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-8">
+                  <div className="flex min-h-[300px] items-center justify-center rounded-xl border border-dashed border-slate-200 bg-slate-50 p-8">
                     <VisualizationPlaceholder algo={algo} />
                   </div>
                 </div>
@@ -275,17 +275,17 @@ function VisualizationPlaceholder({ algo }: { algo: Algorithm }) {
     <div className="text-center">
       <div
         className={`mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-2xl ${
-          isSupervised ? "bg-emerald-500/10" : "bg-amber-500/10"
+          isSupervised ? "bg-emerald-50" : "bg-amber-50"
         }`}
       >
         {isSupervised ? (
-          <TrendingUp className="h-10 w-10 text-emerald-400" />
+          <TrendingUp className="h-10 w-10 text-emerald-500" />
         ) : (
-          <Search className="h-10 w-10 text-amber-400" />
+          <Search className="h-10 w-10 text-amber-500" />
         )}
       </div>
-      <p className="text-slate-400">{algo.summary}</p>
-      <p className="mt-2 text-xs text-slate-600">視覺化圖解具體實現中...</p>
+      <p className="text-slate-500">{algo.summary}</p>
+      <p className="mt-2 text-xs text-slate-400">視覺化圖解具體實現中...</p>
     </div>
   );
 }
@@ -296,10 +296,8 @@ function RegressionVisualization({ logistic }: { logistic: boolean }) {
   return (
     <div className="relative h-64 w-full max-w-md">
       <svg viewBox="0 0 400 280" className="h-full w-full">
-        {/* Axes */}
-        <line x1="50" y1="240" x2="380" y2="240" stroke="#475569" strokeWidth="1.5" />
-        <line x1="50" y1="240" x2="50" y2="20" stroke="#475569" strokeWidth="1.5" />
-        {/* Dots */}
+        <line x1="50" y1="240" x2="380" y2="240" stroke="#cbd5e1" strokeWidth="1.5" />
+        <line x1="50" y1="240" x2="50" y2="20" stroke="#cbd5e1" strokeWidth="1.5" />
         {[
           [80, 200],
           [120, 170],
@@ -310,19 +308,19 @@ function RegressionVisualization({ logistic }: { logistic: boolean }) {
           [320, 70],
           [360, 55],
         ].map(([cx, cy], i) => (
-          <circle key={i} cx={cx} cy={cy} r="4" fill="#60a5fa" opacity="0.7" />
+          <circle key={i} cx={cx} cy={cy} r="4" fill="#3b82f6" opacity="0.7" />
         ))}
         {logistic ? (
           <path
             d="M 50 235 Q 100 230 150 220 Q 200 195 250 140 Q 300 80 350 45 Q 370 35 390 30"
             fill="none"
-            stroke="#34d399"
+            stroke="#10b981"
             strokeWidth="2.5"
           />
         ) : (
-          <line x1="60" y1="220" x2="370" y2="35" stroke="#34d399" strokeWidth="2.5" />
+          <line x1="60" y1="220" x2="370" y2="35" stroke="#10b981" strokeWidth="2.5" />
         )}
-        <text x="200" y="270" fill="#64748b" fontSize="11" textAnchor="middle">
+        <text x="200" y="270" fill="#94a3b8" fontSize="11" textAnchor="middle">
           {logistic ? "Sigmoid Curve — P(y=1|x)" : "Linear Fit — y = β₀ + β₁x"}
         </text>
       </svg>
@@ -336,17 +334,17 @@ function TreeVisualization({ isForest }: { isForest: boolean }) {
     <div className="flex flex-wrap items-center justify-center gap-6">
       {Array.from({ length: trees }, (_, t) => (
         <div key={t} className="flex flex-col items-center">
-          <div className="rounded-full bg-emerald-500/10 px-3 py-1 text-xs text-emerald-400">
+          <div className="rounded-full bg-emerald-50 px-3 py-1 text-xs text-emerald-600">
             {isForest ? `Tree #${t + 1}🌲` : "🌳 Root Node"}
           </div>
           <svg width="100" height="100" viewBox="0 0 100 100">
-            <line x1="50" y1="20" x2="20" y2="55" stroke="#475569" strokeWidth="1.5" />
-            <line x1="50" y1="20" x2="80" y2="55" stroke="#475569" strokeWidth="1.5" />
-            <line x1="20" y1="55" x2="5" y2="85" stroke="#475569" strokeWidth="1" />
-            <line x1="20" y1="55" x2="35" y2="85" stroke="#475569" strokeWidth="1" />
-            <line x1="80" y1="55" x2="65" y2="85" stroke="#475569" strokeWidth="1" />
-            <line x1="80" y1="55" x2="95" y2="85" stroke="#475569" strokeWidth="1" />
-            <circle cx="50" cy="20" r="7" fill="#22d3ee" />
+            <line x1="50" y1="20" x2="20" y2="55" stroke="#cbd5e1" strokeWidth="1.5" />
+            <line x1="50" y1="20" x2="80" y2="55" stroke="#cbd5e1" strokeWidth="1.5" />
+            <line x1="20" y1="55" x2="5" y2="85" stroke="#cbd5e1" strokeWidth="1" />
+            <line x1="20" y1="55" x2="35" y2="85" stroke="#cbd5e1" strokeWidth="1" />
+            <line x1="80" y1="55" x2="65" y2="85" stroke="#cbd5e1" strokeWidth="1" />
+            <line x1="80" y1="55" x2="95" y2="85" stroke="#cbd5e1" strokeWidth="1" />
+            <circle cx="50" cy="20" r="7" fill="#06b6d4" />
             <circle cx="20" cy="55" r="7" fill="#818cf8" />
             <circle cx="80" cy="55" r="7" fill="#f472b6" />
           </svg>
@@ -360,20 +358,18 @@ function KMeansVisualization() {
   return (
     <div className="relative h-64 w-full max-w-md">
       <svg viewBox="0 0 400 280" className="h-full w-full">
-        {/* Cluster 1 */}
-        <circle cx="120" cy="120" r="60" fill="none" stroke="#6366f1" strokeWidth="1" strokeDasharray="6 4" />
+        <circle cx="120" cy="120" r="60" fill="none" stroke="#818cf8" strokeWidth="1" strokeDasharray="6 4" />
         {[
           [100, 100],
           [130, 90],
           [140, 130],
           [110, 140],
         ].map(([cx, cy], i) => (
-          <circle key={i} cx={cx} cy={cy} r="4" fill="#818cf8" />
+          <circle key={i} cx={cx} cy={cy} r="4" fill="#a5b4fc" />
         ))}
         <circle cx="120" cy="115" r="6" fill="none" stroke="#6366f1" strokeWidth="2.5" />
-        <text x="120" y="105" fill="#818cf8" fontSize="10" textAnchor="middle">μ₁</text>
+        <text x="120" y="105" fill="#6366f1" fontSize="10" textAnchor="middle">μ₁</text>
 
-        {/* Cluster 2 */}
         <circle cx="280" cy="160" r="50" fill="none" stroke="#f59e0b" strokeWidth="1" strokeDasharray="6 4" />
         {[
           [260, 150],
@@ -381,10 +377,10 @@ function KMeansVisualization() {
           [300, 170],
           [270, 175],
         ].map(([cx, cy], i) => (
-          <circle key={i} cx={cx} cy={cy} r="4" fill="#fbbf24" />
+          <circle key={i} cx={cx} cy={cy} r="4" fill="#fcd34d" />
         ))}
         <circle cx="280" cy="158" r="6" fill="none" stroke="#f59e0b" strokeWidth="2.5" />
-        <text x="280" y="148" fill="#fbbf24" fontSize="10" textAnchor="middle">μ₂</text>
+        <text x="280" y="148" fill="#f59e0b" fontSize="10" textAnchor="middle">μ₂</text>
       </svg>
     </div>
   );
@@ -394,15 +390,11 @@ function SVMVisualization() {
   return (
     <div className="relative h-64 w-full max-w-md">
       <svg viewBox="0 0 400 280" className="h-full w-full">
-        {/* Dashed margins */}
-        <line x1="80" y1="60" x2="320" y2="230" stroke="#6366f1" strokeWidth="1" strokeDasharray="6 4" opacity="0.5" />
-        <line x1="110" y1="40" x2="350" y2="210" stroke="#6366f1" strokeWidth="1" strokeDasharray="6 4" opacity="0.5" />
-        {/* Hyperplane */}
-        <line x1="95" y1="50" x2="335" y2="220" stroke="#22d3ee" strokeWidth="2.5" />
-        {/* Support vectors */}
-        <circle cx="100" cy="70" r="5" fill="none" stroke="#22d3ee" strokeWidth="2" />
-        <circle cx="310" cy="230" r="5" fill="none" stroke="#22d3ee" strokeWidth="2" />
-        {/* Class dots */}
+        <line x1="80" y1="60" x2="320" y2="230" stroke="#818cf8" strokeWidth="1" strokeDasharray="6 4" opacity="0.5" />
+        <line x1="110" y1="40" x2="350" y2="210" stroke="#818cf8" strokeWidth="1" strokeDasharray="6 4" opacity="0.5" />
+        <line x1="95" y1="50" x2="335" y2="220" stroke="#06b6d4" strokeWidth="2.5" />
+        <circle cx="100" cy="70" r="5" fill="none" stroke="#06b6d4" strokeWidth="2" />
+        <circle cx="310" cy="230" r="5" fill="none" stroke="#06b6d4" strokeWidth="2" />
         {[
           [80, 55],
           [100, 70],
@@ -410,7 +402,7 @@ function SVMVisualization() {
           [90, 90],
           [60, 80],
         ].map(([cx, cy], i) => (
-          <circle key={`c1-${i}`} cx={cx} cy={cy} r="3.5" fill="#818cf8" />
+          <circle key={`c1-${i}`} cx={cx} cy={cy} r="3.5" fill="#a5b4fc" />
         ))}
         {[
           [300, 200],
@@ -419,9 +411,9 @@ function SVMVisualization() {
           [310, 230],
           [290, 190],
         ].map(([cx, cy], i) => (
-          <circle key={`c2-${i}`} cx={cx} cy={cy} r="3.5" fill="#f472b6" />
+          <circle key={`c2-${i}`} cx={cx} cy={cy} r="3.5" fill="#fda4af" />
         ))}
-        <text x="200" y="265" fill="#64748b" fontSize="11" textAnchor="middle">
+        <text x="200" y="265" fill="#94a3b8" fontSize="11" textAnchor="middle">
           Max Margin Hyperplane
         </text>
       </svg>
@@ -433,22 +425,18 @@ function PCAVisualization() {
   return (
     <div className="relative h-64 w-full max-w-md">
       <svg viewBox="0 0 400 280" className="h-full w-full">
-        {/* Original axes */}
-        <line x1="40" y1="240" x2="380" y2="240" stroke="#475569" strokeWidth="1" markerEnd="url(#arrow)" />
-        <line x1="40" y1="240" x2="40" y2="20" stroke="#475569" strokeWidth="1" />
-        {/* PC1 */}
-        <line x1="100" y1="100" x2="320" y2="220" stroke="#22d3ee" strokeWidth="2" />
-        {/* PC2 orthogonal */}
+        <line x1="40" y1="240" x2="380" y2="240" stroke="#cbd5e1" strokeWidth="1" />
+        <line x1="40" y1="240" x2="40" y2="20" stroke="#cbd5e1" strokeWidth="1" />
+        <line x1="100" y1="100" x2="320" y2="220" stroke="#06b6d4" strokeWidth="2" />
         <line x1="240" y1="90" x2="160" y2="230" stroke="#818cf8" strokeWidth="2" strokeDasharray="6 3" />
-        {/* Dots projected */}
         {[0.25, 0.4, 0.55, 0.65, 0.8].map((t, i) => {
           const x = 100 + t * 220;
           const y = 100 + t * 120;
-          return <circle key={i} cx={x} cy={y} r="4" fill="#60a5fa" />;
+          return <circle key={i} cx={x} cy={y} r="4" fill="#3b82f6" />;
         })}
-        <text x="360" y="160" fill="#22d3ee" fontSize="10">PC1</text>
+        <text x="360" y="160" fill="#06b6d4" fontSize="10">PC1</text>
         <text x="200" y="83" fill="#818cf8" fontSize="10">PC2</text>
-        <text x="193" y="270" fill="#64748b" fontSize="11" textAnchor="middle">
+        <text x="193" y="270" fill="#94a3b8" fontSize="11" textAnchor="middle">
           Cov(X) = QΛQᵀ — Principal Components
         </text>
       </svg>

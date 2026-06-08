@@ -32,10 +32,10 @@ const moodIcons: Record<Mood, React.ElementType> = {
 };
 
 const moodColors: Record<Mood, string> = {
-  focused: "text-emerald-400 bg-emerald-500/10",
-  neutral: "text-slate-400 bg-slate-500/10",
-  confused: "text-amber-400 bg-amber-500/10",
-  bored: "text-red-400 bg-red-500/10",
+  focused: "text-emerald-600 bg-emerald-100",
+  neutral: "text-slate-600 bg-slate-100",
+  confused: "text-amber-600 bg-amber-100",
+  bored: "text-red-600 bg-red-100",
 };
 
 const moodLabels: Record<Mood, string> = {
@@ -212,7 +212,7 @@ export default function FaceApiWidget({ onFaceMetricsChange }: FaceApiWidgetProp
       <button
         onClick={() => setIsExpanded(!isExpanded)}
         aria-label={isExpanded ? "Collapse face API panel" : "Expand face API panel"}
-        className="mb-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-slate-800/80 px-3 py-1.5 text-xs text-slate-400 backdrop-blur-sm transition-colors duration-200 hover:bg-slate-700/80 hover:text-slate-300"
+        className="mb-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-white/90 px-3 py-1.5 text-xs text-slate-500 shadow-sm backdrop-blur-sm transition-colors duration-200 hover:bg-white hover:text-slate-700"
       >
         {isExpanded ? (
           <>
@@ -231,20 +231,20 @@ export default function FaceApiWidget({ onFaceMetricsChange }: FaceApiWidgetProp
             initial={{ opacity: 0, scale: 0.9, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 10 }}
-            className="w-72 overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900/90 shadow-2xl backdrop-blur-xl"
+            className="w-72 overflow-hidden rounded-2xl border border-slate-200 bg-white/95 shadow-xl backdrop-blur-xl"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-slate-700/50 px-4 py-3">
+            <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
               <div className="flex items-center gap-2">
-                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-600/20">
-                  <Brain className="h-3.5 w-3.5 text-blue-400" />
+                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-100">
+                  <Brain className="h-3.5 w-3.5 text-blue-600" />
                 </div>
-                <span className="text-xs font-semibold text-slate-300">Face API Tracker</span>
+                <span className="text-xs font-semibold text-slate-700">Face API Tracker</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <span
                   className={`h-1.5 w-1.5 rounded-full ${
-                    isCameraOn ? "animate-pulse bg-emerald-400" : "bg-slate-600"
+                    isCameraOn ? "animate-pulse bg-emerald-500" : "bg-slate-300"
                   }`}
                 />
                 <span className="text-[10px] text-slate-500">
@@ -254,7 +254,7 @@ export default function FaceApiWidget({ onFaceMetricsChange }: FaceApiWidgetProp
             </div>
 
             {/* Camera Feed */}
-            <div className="relative mx-3 mt-3 overflow-hidden rounded-xl border border-slate-700/50 bg-slate-950">
+            <div className="relative mx-3 mt-3 overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
               <video
                 ref={videoRef}
                 autoPlay
@@ -272,7 +272,7 @@ export default function FaceApiWidget({ onFaceMetricsChange }: FaceApiWidgetProp
               />
 
               {!isCameraOn && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/70">
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-100/80 backdrop-blur-sm">
                   <button
                     onClick={startCamera}
                     aria-label="Start camera"
@@ -315,13 +315,13 @@ export default function FaceApiWidget({ onFaceMetricsChange }: FaceApiWidgetProp
                     <Eye className="h-3 w-3" />
                     注意力
                   </span>
-                  <span className="text-xs font-mono font-bold text-blue-400">
+                  <span className="text-xs font-mono font-bold text-blue-600">
                     {metrics.attention.toFixed(0)}%
                   </span>
                 </div>
-                <div className="h-1.5 overflow-hidden rounded-full bg-slate-800">
+                <div className="h-1.5 overflow-hidden rounded-full bg-slate-200">
                   <motion.div
-                    className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"
+                    className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-500"
                     animate={{ width: `${metrics.attention}%` }}
                     transition={{ type: "spring", stiffness: 120, damping: 18 }}
                   />
@@ -335,13 +335,13 @@ export default function FaceApiWidget({ onFaceMetricsChange }: FaceApiWidgetProp
                     <Activity className="h-3 w-3" />
                     參與度
                   </span>
-                  <span className="text-xs font-mono font-bold text-emerald-400">
+                  <span className="text-xs font-mono font-bold text-emerald-600">
                     {metrics.engagement.toFixed(0)}%
                   </span>
                 </div>
-                <div className="h-1.5 overflow-hidden rounded-full bg-slate-800">
+                <div className="h-1.5 overflow-hidden rounded-full bg-slate-200">
                   <motion.div
-                    className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400"
+                    className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-500"
                     animate={{ width: `${metrics.engagement}%` }}
                     transition={{ type: "spring", stiffness: 120, damping: 18 }}
                   />
@@ -349,10 +349,10 @@ export default function FaceApiWidget({ onFaceMetricsChange }: FaceApiWidgetProp
               </div>
 
               {/* Blink Rate */}
-              <div className="flex items-center justify-between rounded-lg bg-slate-800/50 px-3 py-2">
+              <div className="flex items-center justify-between rounded-lg bg-slate-100 px-3 py-2">
                 <span className="text-[10px] text-slate-500">眨眼頻率</span>
-                <span className="text-xs font-mono text-slate-400">
-                  {metrics.blinkRate.toFixed(0)} <span className="text-[10px] text-slate-600">/min</span>
+                <span className="text-xs font-mono text-slate-600">
+                  {metrics.blinkRate.toFixed(0)} <span className="text-[10px] text-slate-400">/min</span>
                 </span>
               </div>
             </div>

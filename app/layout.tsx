@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh-Hant" className="dark">
+    <html lang="zh-Hant">
       <head>
         <link
           rel="stylesheet"
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           crossOrigin="anonymous"
         />
       </head>
-      <body className="font-sans min-h-screen bg-slate-950 text-slate-100">
+      <body className="font-sans min-h-screen bg-slate-50 text-slate-800">
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
