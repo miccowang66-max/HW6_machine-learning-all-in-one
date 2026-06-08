@@ -15,7 +15,10 @@
 
 | Platform | URL | Description |
 |----------|-----|-------------|
+| **Vercel** | [hw-6-machine-learning-all-in-one-8n.vercel.app](https://hw-6-machine-learning-all-in-one-8n.vercel.app/) | Production deployment |
 | **Local Dev** | [http://localhost:3000](http://localhost:3000) | `npm run dev` |
+
+> 📥 **[Download Python implementations](https://hw-6-machine-learning-all-in-one-8n.vercel.app/ml_algorithms.py)** — All 10 algorithms implemented from scratch in a single `.py` file.
 
 ---
 
