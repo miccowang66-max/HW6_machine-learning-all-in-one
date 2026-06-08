@@ -33,7 +33,7 @@
 
 - 📖 **Concept Deep-Dive** — Definition, real-world use cases, pros & cons grid for each algorithm
 - 🧮 **Interactive Math Sandbox** — LaTeX-rendered formulas with live sliders; tweak coefficients and see dynamic computation results
-- 📊 **Visual Diagram Placeholder** — SVG-based structure diagrams (Regression, Decision Tree, SVM, K-Means, PCA)
+- 📊 **Visual Diagrams** — SVG-based structure diagrams for Linear/Logistic Regression, Decision Tree, Random Forest, SVM, K-Means, PCA
 
 ### Face API Integration Hub
 
@@ -43,9 +43,10 @@
 
 ### Design & UX
 
-- 🖤 **Dark Dashboard** — Slate-950 base with glass-morphism cards and blue gradient accents
+- ☀️ **Light Theme** — White/slate-50 background, white cards, slate-200 borders, blue gradient accents
 - 🎞 **Framer Motion Animations** — Smooth layout transitions, spring-based slider bars, entrance animations
 - 📱 **Responsive Layout** — Sidebar + Main Content flex layout
+- ♿ **Accessibility** — Skip-to-content link, focus-visible rings, reduced-motion support
 
 ---
 
@@ -106,20 +107,27 @@ npm start
 
 ```
 ML-Algorithms-Panorama/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml              # GitHub Actions CI/CD for GitHub Pages
 ├── app/
-│   ├── globals.css              # Tailwind directives + custom glass/tag utilities
-│   ├── layout.tsx               # Root layout (dark theme, KaTeX CDN, metadata)
-│   └── page.tsx                 # Main dashboard entry (sidebar + content + widgets)
+│   ├── globals.css                 # Tailwind directives + custom glass/tag utilities
+│   ├── layout.tsx                  # Root layout (light theme, KaTeX CDN, metadata)
+│   └── page.tsx                    # Main dashboard entry (sidebar + content + widgets)
 ├── components/
-│   ├── AlgorithmNav.tsx          # Sidebar: searchable algorithm list with animated cards
-│   ├── MainContentView.tsx       # Concept / Math / Visual tabs + SVG diagrams
-│   ├── MathSandbox.tsx           # Interactive LaTeX sliders with dynamic computation
-│   ├── FaceApiWidget.tsx         # Floating webcam overlay with face metrics display
-│   └── HelpModal.tsx             # Auto-triggered "Need Help?" modal
+│   ├── AlgorithmNav.tsx            # Sidebar: searchable algorithm list with animated cards
+│   ├── MainContentView.tsx         # Concept / Math / Visual tabs + SVG diagrams
+│   ├── MathSandbox.tsx             # Interactive LaTeX sliders with dynamic computation
+│   ├── FaceApiWidget.tsx           # Floating webcam overlay with face metrics display
+│   └── HelpModal.tsx               # Auto-triggered "Need Help?" modal
 ├── lib/
-│   └── data.ts                  # Algorithm data source (ID, name, formula, pros/cons)
+│   └── data.ts                     # Algorithm data source (ID, name, formula, pros/cons)
+├── public/
+│   └── ml_algorithms.py            # Downloadable Python — all 10 algorithms from scratch
 ├── tailwind.config.ts
 ├── tsconfig.json
+├── next.config.js
+├── vercel.json                     # Vercel deployment config
 └── package.json
 ```
 
