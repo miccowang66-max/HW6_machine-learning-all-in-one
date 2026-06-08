@@ -211,7 +211,8 @@ export default function FaceApiWidget({ onFaceMetricsChange }: FaceApiWidgetProp
       {/* Collapsed / Expanded toggle */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="mb-2 flex items-center gap-1.5 rounded-full bg-slate-800/80 px-3 py-1.5 text-xs text-slate-400 backdrop-blur-sm transition-colors hover:bg-slate-700/80 hover:text-slate-300"
+        aria-label={isExpanded ? "Collapse face API panel" : "Expand face API panel"}
+        className="mb-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-slate-800/80 px-3 py-1.5 text-xs text-slate-400 backdrop-blur-sm transition-colors duration-200 hover:bg-slate-700/80 hover:text-slate-300"
       >
         {isExpanded ? (
           <>
@@ -274,7 +275,8 @@ export default function FaceApiWidget({ onFaceMetricsChange }: FaceApiWidgetProp
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/70">
                   <button
                     onClick={startCamera}
-                    className="flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-medium text-white transition-all hover:bg-blue-500 active:scale-95"
+                    aria-label="Start camera"
+                    className="flex cursor-pointer items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-medium text-white transition-all duration-200 hover:bg-blue-500 active:scale-95"
                   >
                     <Camera className="h-4 w-4" />
                     啟動鏡頭
@@ -285,7 +287,8 @@ export default function FaceApiWidget({ onFaceMetricsChange }: FaceApiWidgetProp
               {isCameraOn && (
                 <button
                   onClick={stopCamera}
-                  className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-500/80 text-white transition-all hover:bg-red-500"
+                  aria-label="Stop camera"
+                  className="absolute right-2 top-2 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-red-500/80 text-white transition-all duration-200 hover:bg-red-500"
                 >
                   <X className="h-3 w-3" />
                 </button>

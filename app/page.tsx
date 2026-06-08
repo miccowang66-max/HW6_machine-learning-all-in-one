@@ -47,7 +47,8 @@ export default function Home() {
           </span>
           <a
             href="#"
-            className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-800 hover:text-slate-300"
+            aria-label="GitHub repository"
+            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg text-slate-500 transition-colors duration-200 hover:bg-slate-800 hover:text-slate-300"
           >
             <Github className="h-4 w-4" />
           </a>
@@ -62,7 +63,7 @@ export default function Home() {
         </aside>
 
         {/* Main Content */}
-        <main className="relative flex-1 overflow-hidden bg-slate-950">
+        <main id="main-content" className="relative flex-1 overflow-hidden bg-slate-950">
           <MainContentView selectedId={selectedId} />
         </main>
       </div>

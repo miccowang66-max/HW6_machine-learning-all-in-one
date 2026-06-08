@@ -16,8 +16,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           integrity="sha384-n8MVd4RsNHpzWDII3o62i1w6nT/e2QCxMm2i5hCxBJPmuWQoGLQK7VMx5GM4HqVG"
           crossOrigin="anonymous"
         />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
       </head>
-      <body className="min-h-screen bg-slate-950 text-slate-100">
+      <body className="font-sans min-h-screen bg-slate-950 text-slate-100">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         {children}
       </body>
     </html>

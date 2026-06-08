@@ -46,7 +46,8 @@ export default function HelpModal({ isOpen, onClose }: HelpModalProps) {
               </div>
               <button
                 onClick={onClose}
-                className="flex h-7 w-7 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-800 hover:text-slate-300"
+                aria-label="Close help modal"
+                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg text-slate-500 transition-colors duration-200 hover:bg-slate-800 hover:text-slate-300"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -75,7 +76,7 @@ export default function HelpModal({ isOpen, onClose }: HelpModalProps) {
             <div className="border-t border-slate-700/50 px-6 py-3">
               <button
                 onClick={onClose}
-                className="w-full rounded-xl bg-slate-800 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:bg-slate-700 hover:text-white"
+                className="w-full cursor-pointer rounded-xl bg-slate-800 py-2.5 text-sm font-medium text-slate-300 transition-colors duration-200 hover:bg-slate-700 hover:text-white"
               >
                 了解了，繼續學習
               </button>
@@ -97,7 +98,7 @@ function HelpOption({
   desc: string;
 }) {
   return (
-    <button className="flex w-full items-start gap-3 rounded-xl p-3 text-left transition-colors hover:bg-slate-800/60">
+    <button className="flex w-full cursor-pointer items-start gap-3 rounded-xl p-3 text-left transition-colors duration-200 hover:bg-slate-800/60">
       <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-slate-800">
         <Icon className="h-4 w-4 text-slate-400" />
       </div>

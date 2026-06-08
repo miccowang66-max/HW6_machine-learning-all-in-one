@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import "katex/dist/katex.min.css";
 import TeX from "@matejmazur/react-katex";
 import type { Algorithm } from "@/lib/data";
-import { Sliders, RotateCcw } from "lucide-react";
+import { Sliders, RotateCcw, Triangle, Wand2 } from "lucide-react";
 
 interface MathSandboxProps {
   algo: Algorithm;
@@ -92,7 +92,10 @@ export default function MathSandbox({ algo }: MathSandboxProps) {
         animate={{ opacity: 1, y: 0 }}
         className="glass-card overflow-x-auto p-5"
       >
-        <h3 className="mb-3 text-sm font-semibold text-blue-400">📐 核心數學公式</h3>
+        <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-blue-400">
+          <Triangle className="h-4 w-4" />
+          核心數學公式
+        </h3>
         <div className="rounded-lg bg-slate-800/60 p-4 text-center">
           <span className="text-lg">
             <TeX math={algo.formula} />
@@ -115,7 +118,8 @@ export default function MathSandbox({ algo }: MathSandboxProps) {
             </h3>
             <button
               onClick={handleReset}
-              className="flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs text-slate-400 transition-colors hover:bg-slate-800 hover:text-slate-200"
+              aria-label="Reset parameters"
+              className="flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-xs text-slate-400 transition-colors duration-200 hover:bg-slate-800 hover:text-slate-200"
             >
               <RotateCcw className="h-3 w-3" />
               Reset
@@ -140,7 +144,8 @@ export default function MathSandbox({ algo }: MathSandboxProps) {
                   step={slider.step}
                   value={values[slider.key]}
                   onChange={(e) => handleSlider(slider.key, parseFloat(e.target.value))}
-                  className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-slate-700 accent-blue-500 outline-none"
+                  aria-label={slider.name}
+                  className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-slate-700 accent-blue-500 transition-all duration-200"
                 />
                 <div className="mt-1 flex justify-between text-[10px] text-slate-600">
                   <span>{slider.min}</span>
@@ -159,7 +164,10 @@ export default function MathSandbox({ algo }: MathSandboxProps) {
         transition={{ delay: 0.2 }}
         className="glass-card p-5"
       >
-        <h3 className="mb-3 text-sm font-semibold text-emerald-400">🔮 動態計算結果</h3>
+        <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-emerald-400">
+          <Wand2 className="h-4 w-4" />
+          動態計算結果
+        </h3>
         <div className="rounded-lg bg-slate-800/60 p-4">
           {dynamicResult.type === "latex" ? (
             <span className="text-base">

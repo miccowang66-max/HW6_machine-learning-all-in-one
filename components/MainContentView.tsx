@@ -5,6 +5,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import type { Algorithm } from "@/lib/data";
 import { algorithms } from "@/lib/data";
 import MathSandbox from "./MathSandbox";
+import {
+  BookOpen,
+  Calculator,
+  BarChart3,
+  Brain,
+  Lightbulb,
+  AlertTriangle,
+  TrendingUp,
+  Search,
+  CheckCircle2,
+} from "lucide-react";
 
 const supervisedProsCons: Record<string, { pros: string[]; cons: string[] }> = {
   "01": {
@@ -67,7 +78,7 @@ export default function MainContentView({ selectedId }: MainContentViewProps) {
       <div className="flex h-full items-center justify-center">
         <div className="text-center">
           <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-800">
-            <span className="text-2xl">🧠</span>
+            <Brain className="h-8 w-8 text-slate-500" />
           </div>
           <h3 className="text-lg font-semibold text-slate-300">選擇一個演算法開始學習</h3>
           <p className="mt-1 text-sm text-slate-500">從左側導覽欄選取 Machine Learning 演算法</p>
@@ -114,15 +125,30 @@ export default function MainContentView({ selectedId }: MainContentViewProps) {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-all ${
+              className={`flex cursor-pointer items-center justify-center gap-1.5 rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${
                 activeTab === tab
                   ? "bg-slate-700 text-white shadow-sm"
                   : "text-slate-400 hover:text-slate-200"
               }`}
             >
-              {tab === "concept" && "📖 概念深入"}
-              {tab === "math" && "🧮 互動數學沙盒"}
-              {tab === "visual" && "📊 視覺化圖解"}
+              {tab === "concept" && (
+                <>
+                  <BookOpen className="h-4 w-4" />
+                  概念深入
+                </>
+              )}
+              {tab === "math" && (
+                <>
+                  <Calculator className="h-4 w-4" />
+                  互動數學沙盒
+                </>
+              )}
+              {tab === "visual" && (
+                <>
+                  <BarChart3 className="h-4 w-4" />
+                  視覺化圖解
+                </>
+              )}
             </button>
           ))}
         </div>
@@ -143,13 +169,19 @@ export default function MainContentView({ selectedId }: MainContentViewProps) {
               <div className="space-y-5">
                 {/* Definition */}
                 <div className="glass-card p-5">
-                  <h3 className="mb-3 text-sm font-semibold text-blue-400">📝 定義與核心概念</h3>
+                  <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-blue-400">
+                    <Lightbulb className="h-4 w-4" />
+                    定義與核心概念
+                  </h3>
                   <p className="leading-relaxed text-slate-300">{algo.details}</p>
                 </div>
 
                 {/* Use Case */}
                 <div className="glass-card p-5">
-                  <h3 className="mb-3 text-sm font-semibold text-emerald-400">🎯 應用場景</h3>
+                  <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-emerald-400">
+                    <TrendingUp className="h-4 w-4" />
+                    應用場景
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {algo.use_case.split("、").map((c, i) => (
                       <span
@@ -165,7 +197,10 @@ export default function MainContentView({ selectedId }: MainContentViewProps) {
                 {/* Pros & Cons */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="glass-card p-5">
-                    <h3 className="mb-3 text-sm font-semibold text-green-400">✅ 優點</h3>
+                    <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-green-400">
+                      <CheckCircle2 className="h-4 w-4" />
+                      優點
+                    </h3>
                     <ul className="space-y-2">
                       {prosCons.pros.map((p, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
@@ -176,7 +211,10 @@ export default function MainContentView({ selectedId }: MainContentViewProps) {
                     </ul>
                   </div>
                   <div className="glass-card p-5">
-                    <h3 className="mb-3 text-sm font-semibold text-red-400">⚠️ 缺點</h3>
+                    <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-red-400">
+                      <AlertTriangle className="h-4 w-4" />
+                      缺點
+                    </h3>
                     <ul className="space-y-2">
                       {prosCons.cons.map((c, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
@@ -197,7 +235,10 @@ export default function MainContentView({ selectedId }: MainContentViewProps) {
             {activeTab === "visual" && (
               <div className="space-y-5">
                 <div className="glass-card p-5">
-                  <h3 className="mb-4 text-sm font-semibold text-purple-400">📊 演算法結構視覺化圖解</h3>
+                  <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold text-purple-400">
+                    <BarChart3 className="h-4 w-4" />
+                    演算法結構視覺化圖解
+                  </h3>
                   <div className="flex min-h-[300px] items-center justify-center rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-8">
                     <VisualizationPlaceholder algo={algo} />
                   </div>
@@ -237,7 +278,11 @@ function VisualizationPlaceholder({ algo }: { algo: Algorithm }) {
           isSupervised ? "bg-emerald-500/10" : "bg-amber-500/10"
         }`}
       >
-        <span className="text-3xl">{isSupervised ? "📈" : "🔍"}</span>
+        {isSupervised ? (
+          <TrendingUp className="h-10 w-10 text-emerald-400" />
+        ) : (
+          <Search className="h-10 w-10 text-amber-400" />
+        )}
       </div>
       <p className="text-slate-400">{algo.summary}</p>
       <p className="mt-2 text-xs text-slate-600">視覺化圖解具體實現中...</p>

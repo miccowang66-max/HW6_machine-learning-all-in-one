@@ -7,6 +7,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Fira Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ['"Fira Code"', "ui-monospace", "SFMono-Regular", "monospace"],
+      },
       colors: {
         dashboard: {
           50: "#f8fafc",
@@ -16,6 +20,9 @@ const config: Config = {
           900: "#0f172a",
           950: "#020617",
         },
+      },
+      transitionDuration: {
+        DEFAULT: "200ms",
       },
     },
   },

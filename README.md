@@ -1,12 +1,13 @@
-# 🧠 ML Algorithms Panorama — Interactive Learning Dashboard
+# ML Algorithms Panorama — Interactive Learning Dashboard
 
 [![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.x-38bdf8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
+[![UI UX Pro Max](https://img.shields.io/badge/UI_UX_Pro_Max-v2.0-7c3aed?style=flat-square)](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](/LICENSE)
 
-> A production-ready, interactive dashboard for dynamically learning the Top 10 Machine Learning Algorithms.  
-> **Next.js 14 · Tailwind CSS · Framer Motion · Face API Integration**
+> A production-ready, interactive dashboard for dynamically learning the Top 10 Machine Learning Algorithms.
+> **Next.js 14 · Tailwind CSS · Framer Motion · Face API Integration · UI UX Pro Max Design System**
 
 ---
 

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -21,20 +23,47 @@
 
   html {
     @apply antialiased;
+    scroll-behavior: smooth;
   }
 
   body {
     @apply bg-slate-950 text-slate-100;
+    font-family: "Fira Sans", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  code,
+  kbd,
+  pre,
+  samp,
+  .font-mono {
+    font-family: "Fira Code", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-blue-500/60 ring-offset-2 ring-offset-slate-950 rounded-lg;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
 @layer components {
   .glass-card {
     @apply rounded-2xl border border-slate-700/50 bg-slate-900/60 backdrop-blur-xl;
+    box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.04),
+      0 2px 8px rgba(0, 0, 0, 0.24);
   }
 
   .glass-card-hover {
-    @apply glass-card transition-all duration-300 hover:border-slate-600 hover:bg-slate-800/80 hover:shadow-lg hover:shadow-blue-500/5;
+    @apply glass-card cursor-pointer transition-all duration-200 hover:border-slate-600 hover:bg-slate-800/80 hover:shadow-lg hover:shadow-blue-500/5;
   }
 
   .tag-supervised {
@@ -43,6 +72,10 @@
 
   .tag-unsupervised {
     @apply rounded-full bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-amber-400 ring-1 ring-inset ring-amber-500/20;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:shadow-lg;
   }
 }
 
