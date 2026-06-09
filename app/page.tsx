@@ -63,7 +63,7 @@ export default function Home() {
           </a>
           <span className="flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-[10px] text-slate-500">
             <Sparkles className="h-3 w-3 text-amber-500" />
-            Interactive Dashboard v1.1
+            Interactive Dashboard v1.2
           </span>
           <a
             href="#"
