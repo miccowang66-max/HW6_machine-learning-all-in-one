@@ -1,16 +1,27 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import AlgorithmNav from "@/components/AlgorithmNav";
 import MainContentView from "@/components/MainContentView";
 import FaceApiWidget from "@/components/FaceApiWidget";
 import HelpModal from "@/components/HelpModal";
 import { Brain, Download, Github, Sparkles } from "lucide-react";
 import type { FaceMetrics } from "@/components/FaceApiWidget";
+import { sliderConfigs } from "@/components/MathSandbox";
 
 export default function Home() {
   const [selectedId, setSelectedId] = useState("01");
   const [showHelp, setShowHelp] = useState(false);
+  const [sliderValues, setSliderValues] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    const config = sliderConfigs[selectedId] || [];
+    const defaults: Record<string, number> = {};
+    config.forEach((c) => {
+      defaults[c.key] = c.defaultVal;
+    });
+    setSliderValues(defaults);
+  }, [selectedId]);
 
   const handleFaceMetricsChange = useCallback(
     (metrics: FaceMetrics) => {
@@ -22,6 +33,10 @@ export default function Home() {
     },
     []
   );
+
+  const handleSliderChange = useCallback((key: string, value: number) => {
+    setSliderValues((prev) => ({ ...prev, [key]: value }));
+  }, []);
 
   return (
     <div className="flex h-screen flex-col overflow-hidden bg-slate-50">
@@ -69,7 +84,11 @@ export default function Home() {
 
         {/* Main Content */}
         <main id="main-content" className="relative flex-1 overflow-hidden bg-slate-50">
-          <MainContentView selectedId={selectedId} />
+          <MainContentView
+            selectedId={selectedId}
+            sliderValues={sliderValues}
+            onSliderChange={handleSliderChange}
+          />
         </main>
       </div>
 

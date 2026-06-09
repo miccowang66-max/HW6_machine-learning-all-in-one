@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import "katex/dist/katex.min.css";
 import TeX from "@matejmazur/react-katex";
@@ -9,10 +9,12 @@ import { Sliders, RotateCcw, Triangle, Wand2 } from "lucide-react";
 
 interface MathSandboxProps {
   algo: Algorithm;
+  values: Record<string, number>;
+  onSliderChange: (key: string, value: number) => void;
 }
 
 // Pre-defined slider configs per algorithm
-const sliderConfigs: Record<
+export const sliderConfigs: Record<
   string,
   { name: string; key: string; min: number; max: number; step: number; defaultVal: number }[]
 > = {
@@ -60,26 +62,17 @@ const sliderConfigs: Record<
   ],
 };
 
-export default function MathSandbox({ algo }: MathSandboxProps) {
+export default function MathSandbox({ algo, values, onSliderChange }: MathSandboxProps) {
   const config = sliderConfigs[algo.id] || [];
-  const defaultValues: Record<string, number> = {};
-  config.forEach((c) => {
-    defaultValues[c.key] = c.defaultVal;
-  });
-
-  const [values, setValues] = useState<Record<string, number>>(defaultValues);
-
-  useEffect(() => {
-    setValues(defaultValues);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [algo.id]);
 
   const handleSlider = (key: string, val: number) => {
-    setValues((prev) => ({ ...prev, [key]: val }));
+    onSliderChange(key, val);
   };
 
   const handleReset = () => {
-    setValues(defaultValues);
+    config.forEach((c) => {
+      onSliderChange(c.key, c.defaultVal);
+    });
   };
 
   const dynamicResult = useMemo(() => computeDynamicResult(algo.id, values), [algo.id, values]);
